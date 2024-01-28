@@ -73,7 +73,12 @@ The id may be used as-is, eg ids = [id].
 
 
 def add_file(relative_path, metadata, id):
-    return "todo"
+   collection.add(
+        documents=relative_path,
+        metadatas=metadata,
+        ids=id
+    )
+   
 
 
 """
@@ -83,4 +88,8 @@ return the document.
 """
 
 def get_relevant_file(query_string):
-    return "todo"
+    most_relevant_file =collection.query(
+        query_texts=[query_string],
+        n_results=1
+    )
+    return most_relevant_file
